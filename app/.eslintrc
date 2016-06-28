@@ -1,0 +1,22 @@
+{
+  "extends": [
+    "plugin:react/recommended",
+    "../.eslintrc"
+  ],
+  "plugins": [
+    "react"
+  ],
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "node": false
+  },
+  "globals": {
+    "process": true
+  },
+  "rules": {
+    "react/prop-types": 0,
+    "no-console": 1,
+    "no-debugger": 1
+  }
+}

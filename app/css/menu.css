@@ -1,0 +1,9 @@
+#menu {
+    background-color: #001d29;
+    flex: 0 0 10em;
+}
+
+    #menu .pure-menu-selected {
+        background: #00485a;
+        color: white;
+    }

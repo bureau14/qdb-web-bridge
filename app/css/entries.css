@@ -1,0 +1,57 @@
+.entry-list {
+    background-color: #001d29;
+    overflow-x: auto;
+    overflow-y: auto;
+    padding: 0;
+}
+
+    .entry-list-item {
+        padding: 5px;
+        color: #777;
+        background-color: #001d29;
+    }
+
+        .entry-list-item input {
+            margin: 5px 20px 5px 10px;
+        }
+
+        .entry-list-item a {
+            text-decoration: none;
+            color: inherit;
+            display: inline-block;
+        }
+
+        .entry-list-item.selected {
+            color: white;
+        }
+
+        .entry-list-item:hover {
+            color: #777;
+            background-color: #eee;
+        }
+
+.entry-operations {
+  bottom: 1em;
+  width: 20em;
+  right: 2em;
+}
+
+    .entry-operations button {
+        display: block;
+        margin: 3px;
+        width: calc(100% - 6px);
+    }
+
+#inspect-tagged,
+#inspect-tags {
+    position: relative;
+}
+
+    #inspect-tagged .entry-operations,
+    #inspect-tags .entry-operations {
+      position: absolute;
+    }
+
+#search-results .entry-operations {
+  position: fixed;
+}

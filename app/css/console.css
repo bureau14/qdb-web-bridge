@@ -1,0 +1,38 @@
+.console-text {
+    font-family: monospace;
+    width: 100%;
+    height: 100%;
+    overflow: all;
+    background: black;
+    padding: 5px;
+}
+
+    .console-text input {
+        font-family: monospace;
+        border: none;
+        background: transparent;
+        outline: none;
+        width: calc(100% - 4em);
+    }
+
+    .console-text p {
+        margin: 0;
+        padding: 0;
+        word-break: break-all;
+    }
+
+.console-input, .console-input >input {
+    font-family: monospace;
+}
+
+.console-text > .cancel {
+    color: orange;
+}
+
+.console-text > .error {
+    color: lightcoral;
+}
+
+.console-text > .success {
+    color: lightgreen;
+}

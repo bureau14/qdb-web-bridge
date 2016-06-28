@@ -1,0 +1,32 @@
+#header {
+    background-image: url(../images/top-shadow.png);
+    background-size: 100% 100%;
+    flex: 0 0 10em;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+}
+
+    #logo {
+        flex: 0 0 10em;
+        background: url(../images/logo.png) left no-repeat;
+        background-position: 1em center;
+        background-size: 8em auto;
+    }
+
+    #header-text {
+        flex: 1;
+    }
+
+        #header-text h1 {
+            margin: 5px;
+            font-size: 40pt;
+            font-weight: 400;
+        }
+
+        #header-text h2 {
+            margin: 5px;
+            font-size: 20pt;
+            font-weight: 400;
+            font-style: italic;
+        }

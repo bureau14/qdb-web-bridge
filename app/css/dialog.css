@@ -1,0 +1,37 @@
+
+.dialog {
+    background-color: #001d29;
+    border-radius: 4px;
+    padding: 3px;
+    border: 3px outset #00415d;
+}
+
+.dialog .title {
+    font-size: 120%;
+    margin: 10px;
+}
+
+    .dialog .content {
+        background-color: #00485a;
+        padding: 10px;
+        border: 1px inset #00415d;
+    }
+
+    .dialog .message {
+        margin-top: 10px;
+        margin-bottom: 0;
+    }
+
+    .dialog input[type=text] {
+        width: calc(100% - 6px);
+    }
+
+    .dialog .buttons {
+        display: flex;
+        justify-content: space-around;
+        margin: 10px 20px 10px 20px;
+    }
+
+.dialog .buttons>* {
+    flex: 0 0 5em;
+}

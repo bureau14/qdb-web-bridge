@@ -1,0 +1,7 @@
+node_modules/
+bower_components/
+.tmp/
+
+# Quasardb files:
+/qdb_api.dll
+/node_modules/qdb.node

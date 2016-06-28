@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+	<head>
+		<title>ERROR</title>
+		<meta http-equiv="refresh" content="10">
+	</head>
+	<body style='font-family: sans-serif;'>
+		<h1>Server Error</h1>
+		<p>Not connected to the quasardb cluster!</p>
+		<table>
+			<tr>
+				<th style='text-align: left'>
+					Cluster URI
+				</th>
+				<td style='font-family: monospace;'>
+					<%= uri %>
+				</td>
+			</tr>
+			<tr>
+				<th style='text-align: left'>
+					Error
+				</th>
+				<td style='font-family: monospace;'>
+					<%= error %>
+				</td>
+			</tr>
+		</table>
+		<p>Please check that the cluster is properly running.</p>
+	</body>
+</html>

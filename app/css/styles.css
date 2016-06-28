@@ -1,0 +1,46 @@
+body {
+    background-color: #00485a;
+    color: white;
+}
+
+a {
+    color: white;
+}
+
+th {
+	text-align: left;
+}
+
+h1, h2, h3 {
+    text-shadow: 0 1px 1px black;
+}
+
+h3 {
+    border-bottom: 1px solid #001d29;
+}
+
+input {
+    background: #001d29;
+}
+
+pre {
+    padding: 5px;
+    background-color: #001d29;
+}
+
+.error {
+	color: lightcoral;
+}
+
+.alias {
+    font-family: monospace;
+}
+
+.pure-table thead tr {
+    background-color: #001d29;
+    color: white;
+}
+
+.pure-table-odd td {
+    background-color: #001d29;
+}

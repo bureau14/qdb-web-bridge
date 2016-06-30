@@ -2,10 +2,11 @@ import {pickLocalFile} from '../../../helpers'
 import qdb from '../../../api/QuasardbApi'
 import bytes from 'bytes'
 
-export default class BlobPutCommand {
-    minArgs = 1;
-    maxArgs = 2;
-    args = 'alias [content]'
+export default {
+    minArgs: 1,
+    maxArgs: 2,
+    args: 'alias [content]',
+    help: 'create and set the content of the specified blob, failing if it already exists',
 
     exec([alias,content], {onSucceeded,onFailed,onProgess,onCancelled}) {
         if (content != undefined) {

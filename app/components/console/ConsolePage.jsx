@@ -60,14 +60,14 @@ class ConsolePage extends React.Component {
         const {input} = this.state;
         return (
             <div className='console page'>
-                <div className='console-text' onClick={this.onClick}>
+                <pre className='console-text' onClick={this.onClick}>
                     {lines.map((line, index) => <p key={index} className={line.type}>{line.text}</p>)}
                     {busy && <progress value={progress} />}
                     <form className='console-input' onSubmit={this.onSubmit} style={busy ? hidden : {}}>
                         <span>qdb> </span>
                         <input ref={ref => this.input = ref} value={input} onChange={this.onInputChange} onKeyDown={this.onKeyDown} />
                     </form>
-                </div>
+                </pre>
             </div>
         );
     }

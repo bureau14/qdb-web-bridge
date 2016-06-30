@@ -1,9 +1,10 @@
 import {addTag} from '../../quasardb'
 
-export default class AddTagCommand {
-    minArgs = 2;
-    maxArgs = 2;
-    args = 'alias tag'
+export default {
+    minArgs: 2,
+    maxArgs: 2,
+    args: 'alias tag',
+    help: 'attach the specified tag to the specified entry',
 
     exec([alias,tag], {dispatch,onSucceeded,onFailed}) {
         dispatch(addTag(alias, tag))

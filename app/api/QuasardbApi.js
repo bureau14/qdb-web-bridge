@@ -27,18 +27,24 @@ class QuasardbApi {
 			.then(falseIfUnchanged);
 	}
 
-	blobPut(alias, content, progress) {
-		const url = URL `api/v1/blobs/${alias}`;
-
-		return HTTP.post(url, content, progress);
-	}
-
 	blobGet(alias) {
 		const url = URL `api/v1/blobs/${alias}/content`;
 
 		return HTTP.get(url)
 			.then(deserializeJson)
 			.then(transformLinks);
+	}
+
+	blobPut(alias, content, progress) {
+		const url = URL `api/v1/blobs/${alias}`;
+
+		return HTTP.post(url, content, progress);
+	}
+
+	blobUpdate(alias, content, progress) {
+		const url = URL `api/v1/blobs/${alias}`;
+
+		return HTTP.put(url, content, progress);
 	}
 
 	blobScan(pattern) {
@@ -75,14 +81,6 @@ class QuasardbApi {
 
 	getTags(alias) {
 		const url = URL `api/v1/entries/${alias}/tags`
-
-		return HTTP.get(url)
-			.then(deserializeJson)
-			.then(transformLinks);
-	}
-
-	entry(alias) {
-		const url = URL `api/v1/entries/${alias}`;
 
 		return HTTP.get(url)
 			.then(deserializeJson)

@@ -56,5 +56,13 @@ export let HTTP = {
 			xhr.open('POST', url);
 			xhr.send(data);
 		})
+	},
+
+	put(url, data, progress) {
+		return createXHR(xhr => {
+			if (progress) xhr.upload.addEventListener("progress", e => progress(e.loaded/e.total));
+			xhr.open('PUT', url);
+			xhr.send(data);
+		})
 	}
 };

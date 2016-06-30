@@ -1,4 +1,5 @@
-module.exports = function(req, res) {
+// GET /api/v1/entries/:alias
+export function info(req, res) {
     var db = req.app.locals.db;
     var alias = req.params.alias;
 

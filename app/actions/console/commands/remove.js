@@ -1,9 +1,10 @@
 import {remove} from '../../quasardb'
 
-export default class RemoveCommand {
-    minArgs = 1;
-    maxArgs = 1;
-    args = 'alias'
+export default {
+    minArgs: 1,
+    maxArgs: 1,
+    args: 'alias',
+    help: 'remove (ie delete) an entry from the database',
 
     exec([alias], {dispatch,onSucceeded,onFailed}) {
         dispatch(remove(alias))

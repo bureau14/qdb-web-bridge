@@ -1,6 +1,7 @@
 import url from 'url';
 
-module.exports = function(req, res) {
+// GET /api/v1/entries
+export function search(req, res) {
     let db = req.app.locals.db;
     let prefix = req.query.prefix;
     let limit = parseInt(req.query.limit) || 50;

@@ -1,26 +1,19 @@
 import {sendQdbError} from '../../../../Quasardb'
 import {detectMimeType} from '../../../../helpers/mime'
 
-module.exports = function(req, res) {
-    const db = req.app.locals.db;
-    const alias = req.params.alias;
-    const url = req.baseUrl + req.path;
+// GET /api/v1/blobs/:alias/content
+export function get(req, res) {
+    const {db} = req.app.locals;
+    const {alias} = req.params;
+    const {download} = req.query;
 
-    db.blob(alias).get((err, data) => {
+    db.blob(alias).get(function(err, content) {
         if (err) return sendQdbError(err, res);
 
-        const type = 'blob';
-        const size = data.length;
+        if (download) res.attachment(alias)
 
-        detectMimeType(data, mime => {
-            res.status(200).send({
-                alias, type, size, mime,
-                links: {
-                    self: url,
-                    content: url + "/content",
-                    tags: url + "/tags"
-                }
-            });
-        })
+        detectMimeType(content, mime => {
+            res.status(200).type(mime).send(content);
+        });
     });
 }

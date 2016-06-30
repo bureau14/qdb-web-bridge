@@ -7,12 +7,12 @@ export default function AppRoutes(db, appFolder) {
 		if (db.isConnected())
 			res.render('index.ejs');
 		else if (db.error())
-			res.status("500")
+			res.status(503)
 				.render('notconnected.ejs', {
 					uri: db.uri(),
 					error: db.error().message
 				});
-		else res.status(500).render('starting.ejs');
+		else res.status(503).render('starting.ejs');
 	});
 
 	appRouter.use(Express.static(appFolder));

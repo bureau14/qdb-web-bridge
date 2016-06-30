@@ -1,6 +1,9 @@
 import {sendQdbError} from '../../../../Quasardb'
 
-module.exports = function(req, res) {
+// PATCH /api/v1/entries/:alias
+// PATCH /api/v1/blobs/:alias
+// PATCH /api/v1/tags/:alias
+export function patch(req, res) {
     var db = req.app.locals.db;
     var alias = req.params.alias;
     var action = req.query.action;
@@ -19,7 +22,7 @@ module.exports = function(req, res) {
             .addTag(tag, function(err) {
                 if (err) return sendQdbError(err, res);
 
-                res.status(201).send('Tag "' + tag + '" added to "'+ alias +'"');
+                res.status(204).send('Tag "' + tag + '" added to "'+ alias +'"');
             });
         break;
 
@@ -31,11 +34,11 @@ module.exports = function(req, res) {
             .removeTag(tag, function(err) {
                 if (err) return sendQdbError(err, res);
 
-                res.status(201).send('Tag "' + tag + '" removed from "'+ alias +'"');
+                res.status(204).send('Tag "' + tag + '" removed from "'+ alias +'"');
             });
         break;
 
     default:
-        return res.status(400).send("Unknown action "+action);
+        return res.status(422).send("Unknown action "+action);
     }
 }

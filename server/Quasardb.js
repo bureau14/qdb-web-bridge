@@ -41,18 +41,32 @@ export class QuasardbWrapper {
 
 export function sendQdbError(err, res) {
     switch (err.code) {
-    case qdb.E_ALIAS_NOT_FOUND:
-        res.status(404).send(err.message);
-        break;
+        case qdb.E_TAG_ALREADY_SET:
+        case qdb.E_TAG_NOT_SET:
+            return res.status(304).send(err.message);
 
-    case qdb.E_TAG_ALREADY_SET:
-    case qdb.E_TAG_NOT_SET:
-        res.status(304).send(err.message);
-        break;
+        case qdb.E_ALIAS_NOT_FOUND:
+            return res.status(404).send(err.message);
 
-    default:
-        res.status(500).send(err.message);
-        break;
+        case qdb.E_NOT_IMPLEMENTED:
+            return res.status(501).send(err.message);
+
+        case qdb.E_TIMEOUT:
+            return res.status(504).send(err.message);
+    }
+
+    switch (err.origin) {
+        case 0xc0000000: // input
+            return res.status(400).send(err.message);
+
+        case 0xb0000000: // operation
+            return res.status(422).send(err.message);
+
+        case 0xa0000000: // protocol
+            return res.status(502).send(err.message);
+
+        default:
+            return res.status(500).send(err.message);
     }
 }
 

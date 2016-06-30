@@ -57,10 +57,8 @@ export default function consoleReducer(state=initialState, action) {
         return {
             ...state,
             busy: false,
-            lines: state.lines.concat({
-                type: "success",
-                text: action.result
-            })
+            lines: state.lines.concat(
+                action.result.split('\n').map(text => ({type: "success", text})))
         }
 
     default:

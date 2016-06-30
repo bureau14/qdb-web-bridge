@@ -1,6 +1,7 @@
 import url from 'url';
 
-module.exports = function(req, res) {
+// GET /api/v1/blobs?pattern=
+export function search(req, res) {
     let db = req.app.locals.db;
     let pattern = req.query.pattern;
     let limit = parseInt(req.query.limit) || 50;

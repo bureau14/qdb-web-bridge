@@ -1,6 +1,10 @@
+import {sendQdbError} from '../../../../Quasardb'
 import url from 'url';
 
-module.exports = function (req, res) {
+// GET /api/v1/entries/:alias/tags
+// GET /api/v1/tags/:alias/tags
+// GET /api/v1/blobs/:alias/tags
+export function tags(req, res) {
     let db = req.app.locals.db;
     let alias = req.params.alias;
     let limit = parseInt(req.query.limit) || 100;
@@ -8,9 +12,7 @@ module.exports = function (req, res) {
 
     db.blob(alias).getTags(
         function(err, tags) {
-            if (err) {
-                return res.status(500).send(err.message);
-            }
+            if (err) return sendQdbError(err, res);
 
             let response = {
                 aliases: tags.slice(skip, skip+limit),

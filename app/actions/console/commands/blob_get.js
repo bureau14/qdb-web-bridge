@@ -2,10 +2,11 @@ import {downloadFile} from '../../../helpers'
 import qdb from '../../../api/QuasardbApi'
 import bytes from 'bytes'
 
-export default class BlobGetCommand {
-    minArgs = 1;
-    maxArgs = 1;
-    args = 'alias'
+export default {
+    minArgs: 1,
+    maxArgs: 1,
+    args: 'alias',
+    help: 'get the content of a blob',
 
     exec([alias], {onSucceeded,onFailed}) {
         qdb.getEntry(alias)

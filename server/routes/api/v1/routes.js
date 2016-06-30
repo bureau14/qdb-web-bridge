@@ -1,44 +1,50 @@
-import {Router} from 'express';
-import {raw} from 'body-parser';
+import {Router} from 'express'
+import {raw} from 'body-parser'
+import * as entry from './entries'
+import * as tag from './tags'
+import * as blob from './blobs'
 
 const router = Router();
 const rawBodyParser = raw({limit:'1GB', type:()=>true});
 
 router.route("/entries/")
-    .get(require('./entries/search'));
+    .get(entry.search);
 
-router.route("/entries/:alias")
-    .get(require('./entries/get'))
-    .patch(require('./entries/modify'))
-    .delete(require('./entries/remove'));
+    router.route("/entries/:alias")
+        .get(entry.info)
+        .patch(entry.patch)
+        .delete(entry.remove);
 
-router.route("/entries/:alias/tags")
-    .get(require('./entries/get-tags'));
+        router.route("/entries/:alias/tags")
+            .get(entry.tags);
 
 router.route("/tags/:alias")
-    .get(require('./tags/get'))
-    .patch(require('./entries/modify'))
-    .delete(require('./entries/remove'));
+    .get(tag.info)
+    .patch(entry.patch)
+    .delete(entry.remove);
 
-router.route("/tags/:alias/entries")
-    .get(require('./tags/get-entries'));
+    router.route("/tags/:alias/entries")
+        .get(tag.tagged);
 
-router.route("/tags/:alias/tags")
-    .get(require('./entries/get-tags'));
+    router.route("/tags/:alias/tags")
+        .get(entry.tags);
 
 router.route("/blobs/")
-    .get(require('./blobs/search'));
+    .get(blob.search);
 
-router.route("/blobs/:alias")
-    .get(require('./blobs/get'))
-    .post(rawBodyParser, require('./blobs/create'))
-    .patch(require('./entries/modify'))
-    .delete(require('./entries/remove'));
+    router.route("/blobs/:alias")
+        .get(blob.info)
+        .post(rawBodyParser, blob.put)
+        .put(rawBodyParser, blob.update)
+        .patch(entry.patch)
+        .delete(entry.remove);
 
-router.route("/blobs/:alias/content")
-    .get(require('./blobs/get-content'));
+        router.route("/blobs/:alias/content")
+            .get(blob.get)
+            .put(rawBodyParser, blob.update)
+            .post(rawBodyParser, blob.put);
 
-router.route("/blobs/:alias/tags")
-    .get(require('./entries/get-tags'));
+        router.route("/blobs/:alias/tags")
+            .get(entry.tags);
 
 module.exports = router;

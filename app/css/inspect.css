@@ -8,6 +8,7 @@
 
 .inspect-content-image {
     display: block;
+    max-width: 100%;
 }
 
 .inspect-content-download {

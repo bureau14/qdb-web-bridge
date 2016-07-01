@@ -13,7 +13,15 @@ export function get(req, res) {
         if (download) res.attachment(alias)
 
         detectMimeType(content, mime => {
-            res.status(200).type(mime).send(content);
+            res.status(200)
+                .set({
+                    'Content-Type': mime,
+                    'Content-Length': content.length,
+                    'Cache-Control': 'no-cache, no-store, must-revalidate',
+                    'Pragma': 'no-cache',
+                    'Expires': '0'
+                })
+                .send(content);
         });
     });
 }

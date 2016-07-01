@@ -8,7 +8,7 @@ import InspectTags from "./InspectTags.jsx"
 import InspectContent from "./InspectContent.jsx"
 import {Spinner} from '../../controls'
 
-function InspectPage({alias,error,isFetching,entryType,mime}) {
+function InspectPage({alias,error,isFetching,entryType}) {
 
 
     if (isFetching) {
@@ -32,7 +32,7 @@ function InspectPage({alias,error,isFetching,entryType,mime}) {
             <InspectOverview alias={alias} />
             <InspectTags alias={alias} />
             { entryType == 'tag' && <InspectTagged alias={alias} />}
-            { entryType == 'blob' && <InspectContent mime={mime} alias={alias} />}
+            { entryType == 'blob' && <InspectContent alias={alias} />}
         </div>
     )
 }
@@ -44,8 +44,7 @@ function mapStateToProps(state, ownProps) {
         alias,
         entryType: entry.entryType,
         error: entry.error,
-        isFetching: entry.isFetching,
-        mime: entry.mime
+        isFetching: entry.isFetching
     }
 }
 

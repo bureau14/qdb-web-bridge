@@ -112,6 +112,12 @@ class QuasardbApi {
 			return Promise.reject('Invalid mode: ' + mode);
 		}
 	}
+
+	setExpiry(alias, expiry) {
+		const url = URL `api/v1/entries/${alias}?action=setExpiry&expiry=${expiry}`;
+
+		return HTTP.patch(url);
+	}
 }
 
 export default new QuasardbApi();

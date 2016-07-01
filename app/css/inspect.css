@@ -14,3 +14,11 @@
 .inspect-content-download {
     margin: 5px;
 }
+
+/* Workaround for react-datetime */
+.rdt {
+    display: inline;
+}
+.rdtPicker {
+    color: black;
+}

@@ -30,7 +30,8 @@ module.exports = {
 				files: [
 					'node_modules/font-awesome/css/font-awesome.min.css',
 					'node_modules/purecss/build/pure-min.css',
-					'node_modules/toastr/build/toastr.min.css'
+					'node_modules/toastr/build/toastr.min.css',
+					'node_modules/react-datetime/css/react-datetime.css'
 				]
 			},
 			fonts: {

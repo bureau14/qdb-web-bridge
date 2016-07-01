@@ -6,22 +6,26 @@ export function info(req, res) {
     const db = req.app.locals.db;
     const alias = req.params.alias;
     const url = req.baseUrl + req.path;
+    const blob = db.blob(alias);
 
-    db.blob(alias).get((err, data) => {
+    blob.get((err, content) => {
         if (err) return sendQdbError(err, res);
 
         const type = 'blob';
-        const size = data.length;
+        const size = content.length;
 
-        detectMimeType(data, mime => {
-            res.status(200).send({
-                alias, type, size, mime,
-                links: {
-                    self: url,
-                    content: url + "/content",
-                    tags: url + "/tags"
-                }
-            });
+        blob.getExpiry((err, expiry) => {
+            detectMimeType(content, mime => {
+                res.status(200).send({
+                    alias, type, size, mime,
+                    expiry: expiry.getTime() / 1000,
+                    links: {
+                        self: url,
+                        content: url + "/content",
+                        tags: url + "/tags"
+                    }
+                })
+            })
         })
     });
 }

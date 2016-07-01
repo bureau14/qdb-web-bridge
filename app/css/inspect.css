@@ -5,3 +5,11 @@
     border: none;
     background: #001d29;
 }
+
+.inspect-content-image {
+    display: block;
+}
+
+.inspect-content-download {
+    margin: 5px;
+}

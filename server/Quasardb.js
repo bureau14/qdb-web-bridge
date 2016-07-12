@@ -1,4 +1,4 @@
-const qdb = require('qdb')
+import qdb from 'quasardb'
 
 export class QuasardbWrapper {
     constructor(uri) {

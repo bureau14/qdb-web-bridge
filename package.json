@@ -37,7 +37,7 @@
     "gulp-inject": "^4.0.0",
     "gulp-nodemon": "^2.0.6",
     "gulp-uglify": "^1.5.3",
-    "jquery": "^2.2.3",
+    "jquery": "~>3.0.0",
     "mmmagic": "^0.4.4",
     "moment": "^2.13.0",
     "purecss": "^0.6.0",
